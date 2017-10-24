@@ -1,5 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Script para graficar espectros del Genie2000
+% Script para realizar la curva de conteo en función del voltaje aplicado y de
+% allí determinar la zona de plateau del detector.
+% Se lee una lista de espectros y se los procesa de forma iterativa.
+% Se debe indicar el canal Hd (discriminación) a partir del cual se realiza el conteo.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 close all
 clear all
