@@ -6,7 +6,7 @@ En este repositorio estarán todos los archivos necesarios para realizar la expe
 
 Los archivos aquí subidos pueden ser ejecutados con el software [Octave](https://www.gnu.org/software/octave/) (recomendado, de distribución gratuita) o con [Matlab](https://es.mathworks.com/). Todos los scripts son ejemplos mínimos de las tareas que se tendrán que hacer durante la experiencia. Se dan dos archivos de espectros similares a los que se obtendrán de las mediciones. 
 
-Los archivos de los espectros con que se trabajarán están en formato .CNF (Canberra Nuclear Files) y son archivos binarios pensados para ser leidos con el software de Canberra Genie2000. Los scripts aquí incluidos sólo leen la parte más relevante de dichos archivos. 
+Los archivos de los espectros con que se trabajarán están en formato `.CNF` (Canberra Nuclear Files) y son archivos binarios pensados para ser leidos con el software de Canberra Genie2000. Los scripts aquí incluidos sólo leen la parte más relevante de dichos archivos. 
 
 La idea es que una vez que se entienda qué hace cada script, luego pueda ser modificado en base a lo que se quiera calcular y/o graficar a partir de los espectros medidos.
 
@@ -16,14 +16,14 @@ Algunos archivos están pensados para que sean modificados y adaptados a lo que 
 
 1. Archivos para ser modificados
 
-  * `graficar_espectros.m`: Graficar uno o varios espectros leyendo directamente los archivos .CNF
+  * `graficar_espectros.m`: Graficar uno o varios espectros leyendo directamente los archivos `.CNF`
   * `resolución_picos.m`: Realiza un ajuste Gaussiano a los picos indicados del espectro, calculando su valor medio, FWHM y resolución.
-  * `plateau.m'`: Construye la curva de de contaje discriminado en función del voltaje aplicado para obtener la curva de plateau del detector.
+  * `plateau.m`: Construye la curva de de contaje discriminado en función del voltaje aplicado para obtener la curva de plateau del detector.
 
 2. Archivos que no necesitan modificarse
 
   * `M98.CNF` y `M99.CNF`: Ejemplo de dos espectros similares a los que se obtendrán en la experiencia. Fueron obtenidos con un multicanal de 8192 canales (posteriormente se seleccionaron 4096)
-  * `lee_cnf`: Función que lee los archivos .CNF
+  * `lee_cnf`: Función que lee los archivos `.CNF`
   * `resampleo.m`: Función para agrupar los canales y mejorar la estadística del conteo.
   
 Se trató de que todos los archivos tuvieran los comentarios necesarios en cada instrucción para que fueran fáciles de leer y que se entendiera qué es lo que se hace en cada parte del código. Muchas cosas pueden hacerse de forma más eficiente, pero se prefirió priorizar la claridad.
