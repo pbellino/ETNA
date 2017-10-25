@@ -15,6 +15,7 @@
 % canal_i            -> Canal inicial para el ajuste      
 % canal_f            -> Canal final para el ajuste
 % parametros_ini     -> Parámetros iniciales del ajuste
+% nprom              -> Número de canales que se van a agrupar  
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

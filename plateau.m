@@ -1,12 +1,28 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Script para realizar la curva de conteo en función del voltaje aplicado y de
-% allí determinar la zona de plateau del detector.
-% Se lee una lista de espectros y se los procesa de forma iterativa.
-% Se debe indicar el canal Hd (discriminación) a partir del cual se realiza el conteo.
+% Script para realizar la curva de conteo en función del voltaje
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Permite determinar la zona de plateau del detector.
+% Se lee una lista de espectros y se los procesa de forma iterativa.
+% Se debe indicar el canal Hd (nivel de discriminación) a partir del cual
+% se realiza el conteo.
+%
+% Los parámetros que deberán cambiarse son:
+%
+% archivos       -> Nombre de los archivos
+% voltajes       -> Voltajes de polarizaci´on (mismo orden que en "archivos") 
+% Hd             -> Canal a partir de donde se realiza el conteo (discriminador)
+% nprom          -> Número de canales que se van a agrupar   
+%  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 close all
 clear all
 clc
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lectura de los espectros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 % Lista con todos los nombres de los espectros que se quieren graficar
 archivos = {'M98.CNF',...
             'M99.CNF',...
@@ -48,8 +64,11 @@ xlabel('Canales');ylabel('Tasa de cuentas [cps]');
 ylim([0 15])
  
 
-%----------------------------------------------------------------------
-% A modo de ejemplo, sobreo el area de contaje para el primer espectro
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Visualización del conteo en el espectro
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% A modo de ejemplo, sombreo el area de contaje para el primer espectro
 figure
 plot(canales{1},cuentas_tasa_agrup{1},colores{1});
 hold on
@@ -62,12 +81,14 @@ legend(archivos{1})
 hold off
 %----------------------------------------------------------------------
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Gráfico de la curva cuentas vs voltaje
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 % Finalmente se debe graficar la tasa de cuentas discriminadas para cada
 % voltaje aplicado.
 % Deben estar en el mismo orden en que se definieron los nombres en "archivos"
 voltajes = [1150,1200];
-
 
 figure
 plot(voltajes,cuentas_tot,'s','markerfacecolor','k')
