@@ -17,7 +17,7 @@ Algunos archivos están pensados para que sean modificados y adaptados a lo que 
 1. Archivos para ser modificados
 
   * `graficar_espectros.m`: Graficar uno o varios espectros leyendo directamente los archivos `.CNF`
-  * `resolución_picos.m`: Realiza un ajuste Gaussiano a los picos indicados del espectro, calculando su valor medio, FWHM y resolución.
+  * `resolucion_picos.m`: Realiza un ajuste Gaussiano a los picos indicados del espectro, calculando su valor medio, FWHM y resolución.
   * `plateau.m`: Construye la curva de de contaje discriminado en función del voltaje aplicado para obtener la curva de plateau del detector.
 
 2. Archivos que no necesitan modificarse
@@ -27,6 +27,30 @@ Algunos archivos están pensados para que sean modificados y adaptados a lo que 
   * `resampleo.m`: Función para agrupar los canales y mejorar la estadística del conteo.
   
 Se trató de que todos los archivos tuvieran los comentarios necesarios en cada instrucción para que fueran fáciles de leer y que se entendiera qué es lo que se hace en cada parte del código. Muchas cosas pueden hacerse de forma más eficiente, pero se prefirió priorizar la claridad.
+
+### Si se utiliza Octave
+  
+En el script `resolucion_picos.m` se hace un ajuste no lineal. Para ello es necesario tener instalado el paquete de Octave `optim`, que a su vez necesita del paquete `struct`.
+
+#### Windows
+
+  Se deben bajar los dos paquetes por separado, colocarlos en la carpeta donde está el Octave y ejecutar en la linea de comandos:
+
+```
+pkg install struct-X.X.XX.tar.gz
+pkg install optim-X.X.XX.tar.gz
+``` 
+donde por X se entiende que va la versión del paquete que bajaron. El script lo carga automáticamente cuando lo necesite.
+
+#### Linux
+
+  Para cualquier distribución de Linux derivado de Debian, el paquete se instala haciendo:
+
+```
+sudo apt-get install octave-optim
+```
+e instalará automáticamente la dependencia que necesite.
+
 
 ### Otras opciones
 
