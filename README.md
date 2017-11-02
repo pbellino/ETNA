@@ -34,7 +34,7 @@ En el script `resolucion_picos.m` se hace un ajuste no lineal. Para ello es nece
 
 #### Windows
 
-  Se deben bajar los dos paquetes por separado, colocarlos en la carpeta donde está el Octave y ejecutar en la linea de comandos:
+  Se deben bajar los dos paquetes por separado, colocarlos en la carpeta donde está el Octave y ejecutar en la linea de comandos de Octave:
 
 ```
 pkg install struct-X.X.XX.tar.gz
