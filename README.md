@@ -19,6 +19,7 @@ Algunos archivos están pensados para que sean modificados y adaptados a lo que 
   * `graficar_espectros.m`: Graficar uno o varios espectros leyendo directamente los archivos `.CNF`
   * `resolucion_picos.m`: Realiza un ajuste Gaussiano a los picos indicados del espectro, calculando su valor medio, FWHM y resolución.
   * `plateau.m`: Construye la curva de de contaje discriminado en función del voltaje aplicado para obtener la curva de plateau del detector.
+  * `resta_fondo.m`: Resta la medición del fondo a un dado espectro. Grafica los resultados.
 
 2. Archivos que no necesitan modificarse
 
