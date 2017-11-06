@@ -11,6 +11,7 @@
 % archivos       -> Nombre de los archivos
 % voltajes       -> Voltajes de polarizaci´on (mismo orden que en "archivos") 
 % Hd             -> Canal a partir de donde se realiza el conteo (discriminador)
+% nchan          -> Cantidad de canales utilizados (hardware)
 % nprom          -> Número de canales que se van a agrupar   
 %  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -27,7 +28,10 @@ clc
 archivos = {'M98.CNF',...
             'M99.CNF',...
             };
-            
+
+% Cantidad de canales utilizados (por hardware)
+nchan = 2*4096;
+
 % Tiempo que duró la adquisición
 t=400.*ones(length(archivos),1); % Si son todos iguales
 % Colores para graficar
@@ -47,7 +51,7 @@ figure
 hold on
 for i=1:length(archivos)
   % Se leen los espectros
-  [cuentas{i},canales{i}] = lee_cnf(archivos{i},2*4096,'no');
+  [cuentas{i},canales{i}] = lee_cnf(archivos{i},nchan,'no');
   % Se normaliza con el tiempo (vivo) de medición
   cuentas_tasa{i} = cuentas{i}/t(i);
   % Se agrupan canales 

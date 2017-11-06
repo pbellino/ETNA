@@ -8,7 +8,10 @@ clc
 archivos = {'M98.CNF',...
             'M99.CNF',...
             };
- 
+
+% Cantidad de canales utilizados (por hardware)
+nchan = 2*4096;
+
 % Tiempo que duró la adquisición
 % Si son distintos, hacer una lista. 
 t=300;
@@ -23,7 +26,7 @@ figure
 hold on
 for i=1:length(archivos)
   % Se leen los espectros
-  [cuentas{i},canales{i}] = lee_cnf(archivos{i},2*4096,'no');
+  [cuentas{i},canales{i}] = lee_cnf(archivos{i},nchan,'no');
   % Se normaliza con el tiempo (vivo) de medición
   cuentas_tasa{i} = cuentas{i}/t;
   % Se agrupan canales 

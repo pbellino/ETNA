@@ -9,6 +9,9 @@ archivos = {'M98.CNF',... % Espectro medido con la fuente y fondo
             'M99.CNF',... % Espectro medido del fondo (M99.CNF no es fondo)
             };
  
+% Cantidad de canales utilizados (por hardware)
+nchan = 2*4096;
+
 % Tiempo que duró la adquisición
 t_con_fondo=300;  %  Espectro con fondo
 t_solo_fondo=300; %  Espectro sólo del fondo
@@ -25,7 +28,7 @@ figure
 hold on
 for i=1:length(archivos)
   % Se leen los espectros
-  [cuentas{i},canales{i}] = lee_cnf(archivos{i},2*4096,'no');
+  [cuentas{i},canales{i}] = lee_cnf(archivos{i},nchan,'no');
   % Se normaliza con el tiempo (vivo) de medición
   cuentas_tasa{i} = cuentas{i}/t(i);
   % Se agrupan canales 

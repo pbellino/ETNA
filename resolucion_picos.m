@@ -15,6 +15,7 @@
 % canal_i            -> Canal inicial para el ajuste      
 % canal_f            -> Canal final para el ajuste
 % parametros_ini     -> Parámetros iniciales del ajuste
+% nchan              -> Cantidad de canales utilizados (hardware)
 % nprom              -> Número de canales que se van a agrupar  
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -38,8 +39,11 @@ if isOctave; pkg load optim; end
 archivos = {'M99.CNF',...
             };
 
+% Cantidad de canales utilizados (por hardware)
+nchan = 2*4096;
+
 % Se lee el archivo
-[cuentas,canales] = lee_cnf(archivos{1},8192,'no');
+[cuentas,canales] = lee_cnf(archivos{1},nchan,'no');
 
 % Tiempo (vivo) durante el cual se tomó el espectro
 t=300; % [s]
