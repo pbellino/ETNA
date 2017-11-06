@@ -14,13 +14,13 @@ nchan = 2*4096;
 
 % Tiempo que duró la adquisición
 % Si son distintos, hacer una lista. 
-t=300;
+t=400;
 % Colores para graficar
 colores = {'b','r',' g','k','m','y','c'};
 % Variables donde se guardaran los datos
 cuentas={};canales={};cuentas_tasa={};cuentas_tasa_agrup={};
 % Se agrupan canales para mejorar la estadística (nprom=1 es no agrupar)
-nprom = 4;
+nprom = 1;
 
 figure
 hold on
@@ -40,6 +40,6 @@ for i=1:length(archivos)
 legend(archivos);
 grid on
 xlabel('Canales');ylabel('Tasa de cuentas [cps]');
-ylim([0 20])
+ylim([0 4])
 
 

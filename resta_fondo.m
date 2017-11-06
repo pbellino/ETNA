@@ -13,8 +13,8 @@ archivos = {'M98.CNF',... % Espectro medido con la fuente y fondo
 nchan = 2*4096;
 
 % Tiempo que duró la adquisición
-t_con_fondo=300;  %  Espectro con fondo
-t_solo_fondo=300; %  Espectro sólo del fondo
+t_con_fondo=400;  %  Espectro con fondo
+t_solo_fondo=400; %  Espectro sólo del fondo
 
 t = [t_con_fondo, t_solo_fondo];
 % Colores para graficar
@@ -46,6 +46,6 @@ for i=1:length(archivos)
 legend({'Espectro con fondo', 'Fondo', 'Espectro sin fondo'});
 grid on
 xlabel('Canales');ylabel('Tasa de cuentas [cps]');
-ylim([0 15])
+ylim([0 4])
 
 

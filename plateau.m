@@ -39,12 +39,12 @@ colores = {'b','r',' g','k','m','c','y','b','r','g','k','m','c','y','b','r','g',
 % Variables donde se guardaran los datos
 cuentas={};canales={};cuentas_tasa={};cuentas_tasa_agrup={};
 % Se agrupan canales para mejorar la estadística (nprom=1 es no agrupar)
-nprom = 4;
+nprom = 1;
 
 % Canal a partir del cual se comenzará a contar los pulsos
 % Es el equivalente al nivel del discriminador
 % Se divide por nprom para que sea independiente del agrupamiento
-Hd =240/nprom;
+Hd =240;
 cuentas_tot=[];
 
 figure
@@ -65,7 +65,7 @@ for i=1:length(archivos)
 legend(archivos);
 grid on
 xlabel('Canales');ylabel('Tasa de cuentas [cps]');
-ylim([0 15])
+ylim([0 4])
  
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -80,7 +80,7 @@ area(canales{1}(Hd:end),cuentas_tasa_agrup{1}(Hd:end),'facecolor','r')
 title(['Tasa de cuentas discriminadas:', num2str(cuentas_tot(1)),' cps']);
 grid on
 xlabel('Canales');ylabel('Tasa de cuentas [cps]');
-ylim([0 15])
+ylim([0 4])
 legend(archivos{1})
 hold off
 %----------------------------------------------------------------------

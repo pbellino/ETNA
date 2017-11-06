@@ -46,12 +46,12 @@ nchan = 2*4096;
 [cuentas,canales] = lee_cnf(archivos{1},nchan,'no');
 
 % Tiempo (vivo) durante el cual se tomó el espectro
-t=300; % [s]
+t=400; % [s]
 % Se pasa a tasa de cuentas
 cuentas_tasa = cuentas/t; % [cps]
 
 % Se agrupan canales para mejorar la estadística
-nprom = 2;
+nprom = 1;
 [cuentas_tasa_agrup, canales]=resampleo(cuentas_tasa,nprom,1/nprom,'dt');
 canales = canales + 1; % El primer canal es el #1
 
@@ -61,7 +61,7 @@ plot(canales,cuentas_tasa_agrup);
 legend(archivos);
 grid on
 xlabel('Canales');ylabel('Tasa de cuentas [cps]');
-ylim([0 6]); % Ajustar como mejor convenga
+ylim([0 2.5]); % Ajustar como mejor convenga
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Ajuste Gaussiano del pico de energía completa
@@ -69,8 +69,8 @@ ylim([0 6]); % Ajustar como mejor convenga
 
 % Región en donde se hará el ajuste (parte derecha del pico de energía completa)
 % Dependerá de cuántos canales se hayan agrupado
-canal_i = 1460; % Canal inicial
-canal_f = 1580; % Canal final
+canal_i = 2920; % Canal inicial
+canal_f = 3160; % Canal final
 
 % Define la región de ajuste
 ind = canales( (canales>=canal_i) & (canales<=canal_f));
@@ -78,7 +78,7 @@ x_slice = canales(ind);
 y_slice = cuentas_tasa_agrup(ind);
 
 % Parametros iniciales del ajuste
-parametros_ini=[100,1500,10]; % Dependera del agrupamiento
+parametros_ini=[10,2900,60]; % Dependera del agrupamiento
 
 % Función para el ajuste (Gaussiana)
 % par(1) -> normalización
