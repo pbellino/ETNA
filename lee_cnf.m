@@ -13,6 +13,9 @@ function  [cuentas,canales] = lee_cnf(archivo,nchan_def,grafica)
 %                  el archivo del detector. Son la cantidad de canales que se
 %                  utilizar para dividir los 10V. No es la que se especifica con
 %                  el programa Genie2000. Éste tiene a nchan_def como máximo.
+%                  IMPORTANTE: Esta variable sólo puede tomar los valores 4096
+%                  ó 8192. Si se quiere otro número, se deberá buscar en el .CNF
+%                  dónde comienzan los datos.
 %       grafica:   (OPCIONAL) string para indicar si se quiere graficar. 
 %                  En caso de ingresarse, debe ser "si" ó "no". Si no se ingresa
 %                  se lo toma como "no".
@@ -21,11 +24,11 @@ function  [cuentas,canales] = lee_cnf(archivo,nchan_def,grafica)
 %       cuentas: cuentas en cada canal
 %       canales: numero de canales
 %
-% DESCRIPCION:
+% DESCRIPCIÓN:
 %
 % Función para leer los archivos binarios guardados por el software Genie2000.
 % Sólo lee la parte del archivo que contiene la información sobre las cuentas
-% en cada canal. Se saltea toda la informaci´on extra que se encuentra en el 
+% en cada canal. Se saltea toda la información extra que se encuentra en el 
 % encabezado.
 % Opcionalmente hace el gráfico de cuentas vs canales.
 %
@@ -34,7 +37,7 @@ function  [cuentas,canales] = lee_cnf(archivo,nchan_def,grafica)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % ------------------------------------------------------------------------------
-% COMPROBACION DE LAS ENTRADAS
+% COMPROBACIÓN DE LAS ENTRADAS
 % ------------------------------------------------------------------------------
 if nargin < 1
   % Si no se ingresa ningún argumento de entrada
@@ -63,7 +66,7 @@ fid = fopen(archivo,'r','l');
 q   = fread(fid, inf,'int32');
 fclose(fid);
 
-% Se saltea el encabezado y se queda con los ultimos puntos que corresponden 
+% Se saltea el encabezado y se queda con los últimos puntos que corresponden 
 % a los datos de los canales
 %chan_ini = length(q)-nchan_def+1
 if nchan_def==8192
@@ -79,10 +82,10 @@ cuentas = q(chan_ini:end)';
 canales = 1:length(cuentas);
 
 % ------------------------------------------------------------------------------
-% GRAFICO
+% GRÁFICO
 % ------------------------------------------------------------------------------
 %
-% Si fue pedido, se hace el grafico
+% Si fue pedido, se hace el gráfico
 if strcmp(grafica,'si')
   plot(canales,cuentas,'b.')
   xlabel('Canales');ylabel('Número de cuentas');
