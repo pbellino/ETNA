@@ -5,12 +5,12 @@ close all
 clear all
 clc
 % Lista con todos los nombres de los espectros que se quieren graficar
-archivos = {'M98.CNF',...
-            'M99.CNF',...
+archivos = {'He3_1600.CNF',...
+            'BF3_2000.CNF',...
             };
 
 % Cantidad de canales utilizados (por hardware)
-nchan = 2*4096;
+nchan = 1*4096;
 
 % Tiempo que duró la adquisición
 % Si son distintos, hacer una lista. 
@@ -37,9 +37,11 @@ for i=1:length(archivos)
  end
  hold off
  
-legend(archivos);
+h=legend(archivos);
+% Evita que "_" sea tomado como subindice (latex)
+set(h,'interpreter','none')
 grid on
 xlabel('Canales');ylabel('Tasa de cuentas [cps]');
-ylim([0 4])
-
+xlim([0 2000])
+ylim([0 6])
 

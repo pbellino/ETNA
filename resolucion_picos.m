@@ -36,11 +36,11 @@ if isOctave; pkg load optim; end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Nombre del archivo del espectro que se leerá
-archivos = {'M99.CNF',...
+archivos = {'He3_1600.CNF',...
             };
 
 % Cantidad de canales utilizados (por hardware)
-nchan = 2*4096;
+nchan = 1*4096;
 
 % Se lee el archivo
 [cuentas,canales] = lee_cnf(archivos{1},nchan,'no');
@@ -58,10 +58,12 @@ canales = canales + 1; % El primer canal es el #1
 % Se grafica el espectro
 figure
 plot(canales,cuentas_tasa_agrup);
-legend(archivos);
+h=legend(archivos);
+% Evita que "_" sea tomado como subindice (latex)
+set(h,'interpreter','none')
 grid on
 xlabel('Canales');ylabel('Tasa de cuentas [cps]');
-ylim([0 2.5]); % Ajustar como mejor convenga
+ylim([0 6]); % Ajustar como mejor convenga
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Ajuste Gaussiano del pico de energía completa
@@ -69,8 +71,8 @@ ylim([0 2.5]); % Ajustar como mejor convenga
 
 % Región en donde se hará el ajuste (parte derecha del pico de energía completa)
 % Dependerá de cuántos canales se hayan agrupado
-canal_i = 2920; % Canal inicial
-canal_f = 3160; % Canal final
+canal_i = 1190; % Canal inicial
+canal_f = 1350; % Canal final
 
 % Define la región de ajuste
 ind = canales( (canales>=canal_i) & (canales<=canal_f));
@@ -78,7 +80,7 @@ x_slice = canales(ind);
 y_slice = cuentas_tasa_agrup(ind);
 
 % Parametros iniciales del ajuste
-parametros_ini=[10,2900,60]; % Dependera del agrupamiento
+parametros_ini=[10,1200,60]; % Dependera del agrupamiento
 
 % Función para el ajuste (Gaussiana)
 % par(1) -> normalización

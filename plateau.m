@@ -25,12 +25,12 @@ clc
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Lista con todos los nombres de los espectros que se quieren graficar
-archivos = {'M98.CNF',...
-            'M99.CNF',...
+archivos = {'BF3_2000.CNF',...
+            'He3_1600.CNF',...
             };
 
 % Cantidad de canales utilizados (por hardware)
-nchan = 2*4096;
+nchan = 1*4096;
 
 % Tiempo que duró la adquisición
 t=400.*ones(length(archivos),1); % Si son todos iguales
@@ -62,10 +62,13 @@ for i=1:length(archivos)
   cuentas_tot(i) = sum(cuentas_tasa_agrup{i}(Hd:end));
  end
  hold off
-legend(archivos);
+h=legend(archivos);
+% Evita que "_" sea tomado como subindice (latex)
+set(h,'interpreter','none')
 grid on
 xlabel('Canales');ylabel('Tasa de cuentas [cps]');
-ylim([0 4])
+ylim([0 6])
+xlim([0 2000])
  
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -80,8 +83,11 @@ area(canales{1}(Hd:end),cuentas_tasa_agrup{1}(Hd:end),'facecolor','r')
 title(['Tasa de cuentas discriminadas:', num2str(cuentas_tot(1)),' cps']);
 grid on
 xlabel('Canales');ylabel('Tasa de cuentas [cps]');
-ylim([0 4])
-legend(archivos{1})
+ylim([0 6])
+xlim([0 2000])
+h=legend(archivos{1})
+% Evita que "_" sea tomado como subindice (latex)
+set(h,'interpreter','none')
 hold off
 %----------------------------------------------------------------------
 

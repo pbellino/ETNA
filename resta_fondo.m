@@ -5,12 +5,12 @@ close all
 clear all
 clc
 % Lista con todos los nombres de los espectros que se quieren graficar
-archivos = {'M98.CNF',... % Espectro medido con la fuente y fondo
-            'M99.CNF',... % Espectro medido del fondo (M99.CNF no es fondo)
+archivos = {'BF3_2000.CNF',... % Espectro medido con la fuente y fondo
+            'He3_1600.CNF',... % Espectro medido del fondo (M99.CNF no es fondo)
             };
  
 % Cantidad de canales utilizados (por hardware)
-nchan = 2*4096;
+nchan = 1*4096;
 
 % Tiempo que duró la adquisición
 t_con_fondo=400;  %  Espectro con fondo
@@ -46,6 +46,6 @@ for i=1:length(archivos)
 legend({'Espectro con fondo', 'Fondo', 'Espectro sin fondo'});
 grid on
 xlabel('Canales');ylabel('Tasa de cuentas [cps]');
-ylim([0 4])
+ylim([0 6])
 
 
