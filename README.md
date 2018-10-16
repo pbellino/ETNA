@@ -23,7 +23,7 @@ Algunos archivos están pensados para que sean modificados y adaptados a lo que 
 
 2. Archivos que no necesitan modificarse
 
-  * `M98.CNF` y `M99.CNF`: Ejemplo de dos espectros similares a los que se obtendrán en la experiencia. Fueron obtenidos con un multicanal de 8192 canales (posteriormente se seleccionaron 4096)
+  * `BF3_2000.CNF` y `He3_1600.CNF`: Ejemplo de dos espectros similares a los que se obtendrán en la experiencia. Fueron obtenidos con un multicanal de 8192 canales (posteriormente se seleccionaron 4096)
   * `lee_cnf`: Función que lee los archivos `.CNF`
   * `resampleo.m`: Función para agrupar los canales y mejorar la estadística del conteo.
   
